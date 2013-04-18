@@ -2,19 +2,29 @@
 <div class="span4">
   Filter: <input ng-model="query">
 </div>
-<div class="span12">
-  <table class="table table-striped">
-    <tbody>
-      <tr ng-repeat="entry in entries | filter:query">
-        <td> <span class="label label-warning">{{entry.jobtype}}</span> </td>
-        <td><strong><a href="{{entry.url}}">{{entry.jobtitle}}</a></strong><br />
-          {{entry.company}}
-        </td>
-        <td>{{entry.city}} {{entry.zipcode}}<br />
-          {{entry.state}}, {{entry.country}}</td>
-        <td> {{entry.date | date:shortDate}}</td>
-      </tr>
-    </tbody>
-  </table>
-
+<div class="row-fluid">
+  <div class="span12">
+    <table class="table table-striped">
+      <tbody>
+        <tr ng-repeat="entry in entries | filter:query">
+          <td> <span class="label label-warning">{{entry.jobtype}}</span> </td>
+          <td><strong><a href="{{entry.url}}">{{entry.jobtitle}}</a></strong><br />
+            {{entry.company}}
+          </td>
+          <td>{{entry.city}} {{entry.zipcode}}<br />
+            {{entry.state}}, {{entry.country}}</td>
+          <td> {{entry.date | date:shortDate}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row-fluid">
+  Some of the listed
+  <span id="indeed_at">
+    <a href="http://www.indeed.com/">job</a> data is from
+    <a href="http://www.indeed.com/" title="Job Search">
+      <img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0;vertical-align: middle;" alt="Indeed job search">
+    </a>
+  </span>
 </div>
