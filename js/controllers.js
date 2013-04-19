@@ -6,21 +6,24 @@ angular.module('jobsNorthmpls.controllers', [])
 
   .controller('MainCtrl', function ($scope, Jobs) {
     // obtain the list of jobs and init into $rootScope
-    Jobs.getAllJobEntries();
+    Jobs.getAllJobs();
   })
 
   .controller('JobListCtrl', function ($scope) {
 
   })
 
-  .controller('JobDetailsCtrl', function ($scope, $routeParams) {
-    // Each controller should share a single object that is only requested once.
+  .controller('JobDetailsCtrl', function ($scope, $routeParams, Jobs, mdConverter) {
     // The entry should be the based on the argument that is passed.
-    // The argument is entry.jobkey.
-    // Search array of objects of jobkey that matches.
-    $scope.entry = response.entries[0];
+    $scope.entry = Jobs.findJobByKey($routeParams.jobKey);
 
-    // If the object has a fulltext field it should be sent through markdown converter.
-    var mdConverter = new Showdown.converter();
-    $scope.entry.fulltext = mdConverter.makeHtml($scope.entry.fulltext);
+    // listen for entry change and init necessary properties
+    $scope.$watch('entry', function (newValue, oldValue) {
+      if (!newValue || newValue === oldValue) return;
+
+      // If the object has a fulltext field it should be sent through markdown converter.
+      if ($scope.entry.fulltext) {
+        $scope.entry.fulltext = mdConverter.makeHtml($scope.entry.fulltext);
+      }
+    });
   });
