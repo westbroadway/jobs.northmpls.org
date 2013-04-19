@@ -1,20 +1,20 @@
 <div class="row-fluid">
   <div class="span12">
     <br>
-    <h1>{{entry.Field5}}</h1>
-    <h2><a href="{{entry.Field2}}">{{entry.Field1}}</a></h2>
+    <h1>{{entry.jobtitle}}</h1>
+    <h2><a href="{{entry.url}}">{{entry.company}}</a></h2>
     <div class="row-fluid">
       <div class="span12">
-        <span class="duration">{{entry.Field6}}</span>&nbsp;&nbsp;<span class="job_info_sep">|</span>&nbsp;&nbsp;{{entry.Field11}}, {{entry.Field12}}&nbsp;&nbsp;<span class="job_info_sep">|</span>&nbsp;&nbsp;Posted on {{entry.DateCreated}}
+        <span class="duration">{{entry.jobtype}}</span>&nbsp;&nbsp;<span class="job_info_sep">|</span>&nbsp;&nbsp;{{entry.city}}, {{entry.state}} {{entry.zipcode}}&nbsp;&nbsp;<span class="job_info_sep">|</span>&nbsp;&nbsp;Posted on {{entry.date}}
       </div>
     </div>
     <hr>
 
     <h3>Job Description</h3>
 
-    <div class="row-fluid" ng-bind-html-unsafe="entry.Field7">
-      Job Description
-    </div>
+    <div class="row-fluid" ng-bind="entry.snippet"></div>
+
+    <div class="row-fluid" ng-bind-html-unsafe="entry.fulltext"></div>
 
     <hr>
 
@@ -23,26 +23,25 @@
 
       <div class="span4 ">
         <h4>Company</h4>
-        <span>{{entry.Field1}}</span><br>
+        <span>{{entry.company}}</span><br>
 
         <h4>Job Type</h4>
-        <span>{{entry.Field6}}</span><br>
+        <span>{{entry.jobtype}}</span><br>
 
       </div>
       <div class="span4 ">
         <h4>Location</h4>
-        <span>{{entry.Field11}}, {{entry.Field12}}</span><br>
+        <span>{{entry.city}}, {{entry.state}} {{entry.zipcode}}</span><br />
 
         <h4>Job Title</h4>
-        <span>{{entry.Field5}}</span><br>
+        <span>{{entry.jobtitle}}</span><br>
       </div>
       <div class="span4 ">
 
         <h4>Compensation</h4>
-        <span>{{entry.Field8}}</span><br>
+        <span>{{entry.compensation}}</span><br>
 
       </div>
-
 
     </div>
 
