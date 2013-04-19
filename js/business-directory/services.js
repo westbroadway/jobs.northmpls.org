@@ -11,10 +11,11 @@ angular.module('businessDirectory.services', [])
     return {
       getAll: function () {
         if (!$rootScope.businesses) {
-          return $http.get(config.BUSINESSES_SOURCE).success(function (response) {
-            $rootScope.businesses = response;
-            $rootScope.$broadcast(config.EVENTS.BUSINESSES_OBTAINED);
-          });
+          return $http.get(config.BUSINESSES_SOURCE, {headers: {"Accept": "application/vnd.github.raw"}})
+            .success(function (response) {
+              $rootScope.businesses = response;
+              $rootScope.$broadcast(config.EVENTS.BUSINESSES_OBTAINED);
+            });
         } else {
           return $rootScope.businesses;
         }
