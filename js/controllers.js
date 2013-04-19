@@ -17,6 +17,7 @@ angular.module('jobsNorthmpls.controllers', [])
     // The entry should be the based on the argument that is passed.
     Jobs.findJobByKey($routeParams.jobKey).then(function (entry) {
       $scope.entry = entry;
+      $scope.entry.fulltext = mdConverter.makeHtml($scope.entry.fulltext);
     });
 
     // listen for entry change and init necessary properties
@@ -25,7 +26,7 @@ angular.module('jobsNorthmpls.controllers', [])
 
       // If the object has a fulltext field it should be sent through markdown converter.
       if ($scope.entry.fulltext) {
-        $scope.entry.fulltext = mdConverter.makeHtml($scope.entry.fulltext);
+        //$scope.entry.fulltext = mdConverter.makeHtml($scope.entry.fulltext);
       }
     });
   });
