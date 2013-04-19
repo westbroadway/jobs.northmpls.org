@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
+angular.module('jobsNorthmpls.controllers', [])
 
   .controller('MyCtrl1', function($scope, $http) {
     // Each controller should share a single object that is only requested once.
