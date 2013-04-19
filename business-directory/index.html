@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" ng-app="businessDirectory">
+<head>
+  <meta charset="utf-8">
+  <title>Business Directory</title>
+</head>
+<body data-ng-controller="MainCtrl">
+
+<div data-resource-loading-notification></div>
+
+<div class="pageEl" id="pageEl_25335615">
+
+  <div class="pageElement codeElement">
+
+    <div id="searchHeader">
+      <ul>
+        <li>
+          <label for="filterByType">Filter By Type:</label>
+          <select id="filterByType">
+            <option val="unselected">Filter By Type…</option>
+            <option val="Automotive_Parts_Services_Care_&amp;_Sales">Automotive Parts, Services, Care &amp; Sales</option>
+            <option val="Bars_Pubs_&amp;_Liquor_Stores">Bars, Pubs &amp; Liquor Stores</option>
+            <option val="Beauty_&amp;_Hair">Beauty &amp; Hair</option>
+            <option val="Cellular_Sales_&amp;_Services">Cellular Sales &amp; Services</option>
+            <option val="Childcare_Services">Childcare Services</option>
+            <option val="Commercial_Industrial_Technology_&amp;_Building_Supplies">Commercial, Industrial, Technology &amp; Building Supplies</option>
+            <option val="Community_Resources">Community Resources</option>
+            <option val="Electronic_Sales_Services_and_Internet_Development">Electronic Sales, Services and Internet Development</option>
+            <option val="Employment_Services">Employment Services</option>
+            <option val="Entertainment">Entertainment</option>
+            <option val="Financial">Financial</option>
+            <option val="Food_Stores">Food Stores</option>
+            <option val="Grocery_Gas_&amp;_Convenience">Grocery, Gas &amp; Convenience</option>
+            <option val="Health_&amp;_Wellness">Health &amp; Wellness</option>
+            <option val="Insurance_Agencies">Insurance Agencies</option>
+            <option val="Laundry_&amp;_Dry_Cleaning_Services">Laundry &amp; Dry Cleaning Services</option>
+            <option val="Legal">Legal</option>
+            <option val="Misc._Sales_and_Services">Misc. Sales and Services</option>
+            <option val="Nail_Service">Nail Service</option>
+            <option val="Photography_Art_and_Music_Production">Photography, Art and Music Production</option>
+            <option val="Real_Estate_Services">Real Estate Services</option>
+            <option val="Religious_Organizations">Religious Organizations</option>
+            <option val="Restaurant">Restaurant</option>
+            <option val="Retail_Stores_and_Shops">Retail Stores and Shops</option>
+            <option val="Youth_Resources">Youth Resources</option>
+          </select>
+        </li>
+        <li style="">
+          <label for="searchByName">Search By Name:</label>
+          <input type="text" id="searchByName">
+        </li>
+      </ul>
+    </div>
+
+    <!--<div id="searchResults">
+      <ul class="media-block">
+        <li class="media-block-module" data-ng-repeat="business in businesses">
+          <div class="media-avatar">
+            <a class="photo-box" href="null"><img data-ng-src="null"></a>
+          </div>
+          <div class="media-story">
+            <div class="item-title"><a href="">4th Street Saloon Inc</a></div>
+            <ul class="media-content">
+              <li class="address">
+                <a href="https://maps.google.com/?mid=1339090648&amp;q=328 W Broadway Ave">328 W Broadway Ave</a></li>
+              <li class="phone"><a href="tel:612.521.1021">612.521.1021</a></li>
+              <li class="type">Bars, Pubs &amp; Liquor Stores</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>-->
+
+
+    <!--var template = '' +
+    '<li class="media-block-module">' +
+    ' <div class="media-avatar">' +
+    '   <a href="' + media[attrs.website] + '" class="photo-box">' +
+    '     <img src="' + media[attrs.photo_url] + '" />' +
+    '   </a>' +
+    ' </div>' +
+    ' <div class="media-story">' +
+    '   <div class="item-title">' +
+    '     <a href="">' + media[attrs.name] + '</a>' +
+    '   </div>' +
+    '   <ul class="media-content">' +
+    '     <li class="address">' +
+    '       <a href="https://maps.google.com/?mid=1339090648&q=' + media[attrs.address] + '">' + media[attrs.address] + '</a>' +
+    '     </li>' +
+    '     <li class="phone">' +
+    '       <a href="tel:' + media[attrs.phone] + '">'+ media[attrs.phone] + '</a>' +
+    '     </li>' +
+    '     <li class="type">' + media[attrs.group] + '</li>' +
+    '   </ul>' +
+    ' </div>' +
+    '</li>'-->
+
+    <pre>{{ businesses | json }}</pre>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+
+  <script src="../js/business-directory/app.js"></script>
+  <script src="../js/business-directory/config.js"></script>
+  <script src="../js/business-directory/services.js"></script>
+  <script src="../js/business-directory/controllers.js"></script>
+  <script src="../js/business-directory/filters.js"></script>
+  <script src="../js/business-directory/directives.js"></script>
+</body>
+</html>
