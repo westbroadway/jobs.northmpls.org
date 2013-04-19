@@ -19,14 +19,4 @@ angular.module('jobsNorthmpls.controllers', [])
       $scope.entry = entry;
       $scope.entry.fulltext = mdConverter.makeHtml($scope.entry.fulltext);
     });
-
-    // listen for entry change and init necessary properties
-    $scope.$watch('entry', function (newValue, oldValue) {
-      if (!newValue || newValue === oldValue) return;
-
-      // If the object has a fulltext field it should be sent through markdown converter.
-      if ($scope.entry.fulltext) {
-        //$scope.entry.fulltext = mdConverter.makeHtml($scope.entry.fulltext);
-      }
-    });
   });
