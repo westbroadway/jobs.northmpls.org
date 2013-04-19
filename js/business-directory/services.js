@@ -13,7 +13,20 @@ angular.module('businessDirectory.services', [])
         if (!$rootScope.businesses) {
           return $http.get(config.BUSINESSES_SOURCE, {headers: {"Accept": "application/vnd.github.raw"}})
             .success(function (response) {
-              $rootScope.businesses = response;
+              var lettersRegExp = /\W/g;
+              // normalize header to contain only letters
+              var headers = _(response.shift()).map(function (value) { return value.toLowerCase().replace(lettersRegExp, ''); });
+
+              // create hashes from businesses arrays
+              $rootScope.businesses = _(response).map(function (item) {
+                var mappedItem = {};
+                _(item).each(function (value, key) {
+                  mappedItem[headers[key]] = value;
+                });
+                return mappedItem;
+              });
+
+              // fire ready event
               $rootScope.$broadcast(config.EVENTS.BUSINESSES_OBTAINED);
             });
         } else {

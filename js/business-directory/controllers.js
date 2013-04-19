@@ -10,4 +10,9 @@ angular.module('businessDirectory.controllers', [])
 
   .controller('BusinessListCtrl', function ($scope) {
 
+    $scope.search = {
+      category: 0,
+      query: ''
+    };
+
   });
