@@ -4,9 +4,14 @@
 
 angular.module('jobsNorthmpls.controllers', [])
 
-  .controller('MyCtrl1', function($scope, $http, config) {
+  .controller('JobListCtrl', function ($scope, Jobs) {
+    // obtain the list of jobs
+    $scope.entries = Jobs.allEntries.query();
+  })
+
+  .controller('JobDetailsCtrl', function ($scope, Jobs) {
     // Each controller should share a single object that is only requested once.
-    $http.get(config.JOB_ENTRIES_SOURCE).success(function (response) {
+    Jobs.allEntries.success(function (response) {
       // The entry should be the based on the argument that is passed.
       // The argument is entry.jobkey.
       // Search array of objects of jobkey thath matches.
@@ -15,12 +20,5 @@ angular.module('jobsNorthmpls.controllers', [])
       // If the object has a fulltext field it should be sent through markdown converter.
       var mdConverter = new Showdown.converter();
       $scope.entry.fulltext = mdConverter.makeHtml($scope.entry.fulltext);
-    })
-  })
-
-  .controller('JobList', function($scope, $http, config) {
-    // Each controller should share a single object that is only requested once.
-    $http.get(config.JOB_ENTRIES_SOURCE).success(function (response) {
-      $scope.entries = response;
     })
   });
