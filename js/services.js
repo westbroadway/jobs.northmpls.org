@@ -24,16 +24,19 @@ angular.module('jobsNorthmpls.services', ['ngResource'])
           return _($rootScope.jobs).find(function (item) { return item.jobkey === jobkey; });
         };
 
+        var deferred = $q.defer();
+
         if ($rootScope.jobs) {// jobs are already loaded
-          return find();
+          deferred.resolve(find());
         } else {// jobs are loading
-          var deferred = $q.defer();
+
           $rootScope.$on(config.EVENTS.JOBS_OBTAINED, function (newValue) {
             if (!newValue) return;
             deferred.resolve(find());
           });
-          return deferred.promise;
         }
+
+        return deferred.promise;
       }
     };
   })
