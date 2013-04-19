@@ -4,9 +4,9 @@
 
 angular.module('jobsNorthmpls.controllers', [])
 
-  .controller('MyCtrl1', function($scope, $http) {
+  .controller('MyCtrl1', function($scope, $http, config) {
     // Each controller should share a single object that is only requested once.
-    $http.get('http://northmpls.webscript.io/jobs').success(function (response) {
+    $http.get(config.JOB_ENTRIES_SOURCE).success(function (response) {
       // The entry should be the based on the argument that is passed.
       // The argument is entry.jobkey.
       // Search array of objects of jobkey thath matches.
@@ -18,9 +18,9 @@ angular.module('jobsNorthmpls.controllers', [])
     })
   })
 
-  .controller('JobList', function($scope, $http) {
+  .controller('JobList', function($scope, $http, config) {
     // Each controller should share a single object that is only requested once.
-    $http.get('http://northmpls.webscript.io/jobs').success(function (response) {
+    $http.get(config.JOB_ENTRIES_SOURCE).success(function (response) {
       $scope.entries = response;
     })
   });
