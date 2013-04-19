@@ -1,11 +1,21 @@
 <div class="row-fluid">
   <div class="span12">
     <br>
+
     <h1>{{entry.jobtitle}}</h1>
+
     <h2><a href="{{entry.url}}">{{entry.company}}</a></h2>
+
     <div class="row-fluid">
       <div class="span12">
-        <span class="duration">{{entry.jobtype}}</span>&nbsp;&nbsp;<span class="job_info_sep">|</span>&nbsp;&nbsp;{{entry.city}}, {{entry.state}} {{entry.zipcode}}&nbsp;&nbsp;<span class="job_info_sep">|</span>&nbsp;&nbsp;Posted on {{entry.date}}
+        <span class="duration">{{entry.jobtype}}</span>
+        &nbsp;&nbsp;
+        <span class="job_info_sep">|</span>
+        &nbsp;&nbsp;
+        {{entry.city}}, {{entry.state}} {{entry.zipcode}}
+        &nbsp;&nbsp;
+        <span class="job_info_sep">|</span>
+        &nbsp;&nbsp;Posted on {{entry.date}}
       </div>
     </div>
     <hr>
@@ -19,6 +29,7 @@
     <hr>
 
     <h3>Job summary</h3>
+
     <div class="row-fluid">
 
       <div class="span4 ">
@@ -31,7 +42,7 @@
       </div>
       <div class="span4 ">
         <h4>Location</h4>
-        <span>{{entry.city}}, {{entry.state}} {{entry.zipcode}}</span><br />
+        <span>{{entry.city}}, {{entry.state}} {{entry.zipcode}}</span><br/>
 
         <h4>Job Title</h4>
         <span>{{entry.jobtitle}}</span><br>

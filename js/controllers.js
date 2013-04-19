@@ -15,7 +15,9 @@ angular.module('jobsNorthmpls.controllers', [])
 
   .controller('JobDetailsCtrl', function ($scope, $routeParams, Jobs, mdConverter) {
     // The entry should be the based on the argument that is passed.
-    $scope.entry = Jobs.findJobByKey($routeParams.jobKey);
+    Jobs.findJobByKey($routeParams.jobKey).then(function (entry) {
+      $scope.entry = entry;
+    });
 
     // listen for entry change and init necessary properties
     $scope.$watch('entry', function (newValue, oldValue) {
