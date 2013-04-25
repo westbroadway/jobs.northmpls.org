@@ -10,13 +10,22 @@ angular.module('jobsNorthmpls.controllers', [])
   })
 
   .controller('JobListCtrl', function ($scope) {
-
+    $scope.order = function (item) {
+      return item.created;
+    };
+    $scope.class = function (item) {
+      if ('submitted' == item.type) {
+        return 'success'
+      }
+      else {
+        return '';
+      }
+    };
   })
 
   .controller('JobDetailsCtrl', function ($scope, $routeParams, Jobs, mdConverter) {
     // The entry should be the based on the argument that is passed.
     Jobs.findJobByKey($routeParams.jobKey).then(function (entry) {
       $scope.entry = entry;
-      $scope.entry.fulltext = mdConverter.makeHtml($scope.entry.fulltext);
     });
   });

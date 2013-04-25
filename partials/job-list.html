@@ -8,23 +8,24 @@
   <div class="span12">
     <table class="table table-striped">
       <tbody>
-      <tr ng-repeat="entry in jobs | filter:query">
+      <tr ng-class="class" ng-repeat="entry in jobs | filter:query | orderBy:order:true">
         <td>
-          <span class="label label-warning">{{entry.jobtype}}</span>
+<!--           <span class="label label-warning">{{entry.jobtype}}</span> -->
         </td>
         <td>
           <strong>
             <a data-ng-href="#/jobs/{{entry.jobkey}}">{{entry.jobtitle}}</a>
           </strong>
-          <br>
-          {{entry.company}}
+          - {{entry.company}}
+          <br />
+          <p>{{entry.snippet}}</p>
         </td>
         <td>
-          {{entry.city}} {{entry.zipcode}}<br>
-          {{entry.state}}, {{entry.country}}
+          {{entry.city}} {{entry.zipcode}}<br />
+          {{entry.state}}
         </td>
         <td>
-          {{entry.date | date:shortDate}}
+          {{entry.created | date:shortDate}}
         </td>
       </tr>
       </tbody>
