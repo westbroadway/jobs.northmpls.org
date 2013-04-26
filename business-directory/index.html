@@ -61,7 +61,7 @@
           <div class="item-title"><a data-ng-href="{{business.website}}" data-ng-bind="business.businessname"></a></div>
           <ul class="media-content">
             <li class="address">
-              <a data-ng-href="https://maps.google.com/?mid=1339090648&amp;q={{ business.citystate }}" data-ng-bind="business.citystate"></a>
+              <a data-ng-href="https://maps.google.com/?mid=1339090648&amp;q={{ business.address + ', ' + business.citystate }}" data-ng-bind="business.address + ', ' + business.citystate"></a>
             </li>
             <li class="phone"><a href="tel:{{ business.phone }}" data-ng-bind="business.phone"></a></li>
             <li class="type" data-ng-bind="business.category"></li>
