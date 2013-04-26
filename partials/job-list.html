@@ -8,7 +8,7 @@
   <div class="span12">
     <table class="table table-striped">
       <tbody>
-      <tr ng-class="class" ng-repeat="entry in jobs | filter:query | orderBy:order:true">
+      <tr data-ng-class="{success: entry.type == 'submitted'}" data-ng-repeat="entry in jobs | filter:query | orderBy:order:true">
         <td>
 <!--           <span class="label label-warning">{{entry.jobtype}}</span> -->
         </td>
