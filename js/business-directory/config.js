@@ -7,6 +7,6 @@ angular.module('businessDirectory.constants', [])
     EVENTS: {
       BUSINESSES_OBTAINED: 'Businesses.getAll.Success'
     },
-    //BUSINESSES_SOURCE: '/business-directory/businesses.json'
-    BUSINESSES_SOURCE: 'https://api.github.com/repos/westbroadway/northmpls_content/contents/business.json'
+    BUSINESSES_SOURCE: '/business-directory/businesses2.json'
+//    BUSINESSES_SOURCE: 'https://api.github.com/repos/westbroadway/northmpls_content/contents/business.json'
   });

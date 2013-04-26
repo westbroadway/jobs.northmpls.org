@@ -59,12 +59,13 @@
       <li class="media-block-module" data-ng-repeat="business in businesses | filter:{$: search.query, category: search.category}">
         <div class="media-story">
           <div class="item-title">
-            <a data-ng-show="isLink(business.website)" data-ng-href="http://{{business.website}}" data-ng-bind="business.businessname" target="_blank"></a>
-            <span data-ng-hide="isLink(business.website)" data-ng-bind="business.businessname"></span>
+            <a data-ng-show="isLink(business.website)" data-ng-href="http://{{business.website}}" data-ng-bind="business.business_name" target="_blank"></a>
+            <span data-ng-hide="isLink(business.website)" data-ng-bind="business.business_name"></span>
           </div>
           <ul class="media-content">
             <li class="address">
-              <a data-ng-href="https://maps.google.com/?mid=1339090648&amp;q={{ business.address + ', ' + business.citystate }}" data-ng-bind="business.address + ', ' + business.citystate"></a>
+              <a data-ng-href="https://maps.google.com/?mid=1339090648&amp;q={{ buildAddress(business) }}"
+                  data-ng-bind="buildAddress(business)"></a>
             </li>
             <li class="phone"><a href="tel:{{ business.phone }}" data-ng-bind="business.phone"></a></li>
             <li class="type" data-ng-bind="business.category"></li>
