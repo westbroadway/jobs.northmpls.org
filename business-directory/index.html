@@ -14,35 +14,10 @@
     <ul>
 
       <li>
-        <label for="filterByType">Filter By Type:</label>
-        <select id="filterByType" data-ng-model="search.category">
-          <option value="0">Filter By Type…</option>
-          <option value="Automotive">Automotive Parts, Services, Care &amp; Sales</option>
-          <option value="Bars, Pubs & Liquor Stores">Bars, Pubs &amp; Liquor Stores</option>
-          <option value="Beauty & Hair">Beauty &amp; Hair</option>
-          <option value="Cellular Sales & Services">Cellular Sales &amp; Services</option>
-          <option value="Childcare Services">Childcare Services</option>
-          <option value="Commercial, Industrial, Technology & Building Supplies">Commercial, Industrial, Technology &amp; Building Supplies</option>
-          <option value="Community Resources">Community Resources</option>
-          <option value="Electronic Sales, Services and Internet Development">Electronic Sales, Services and Internet Development</option>
-          <option value="Employment Services">Employment Services</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="Financial">Financial</option>
-          <option value="Food Stores">Food Stores</option>
-          <option value="Grocery, Gas & Convenience">Grocery, Gas &amp; Convenience</option>
-          <option value="Health & Wellness">Health &amp; Wellness</option>
-          <option value="Insurance Agencies">Insurance Agencies</option>
-          <option value="Laundry & Dry Cleaning Services">Laundry &amp; Dry Cleaning Services</option>
-          <option value="Legal">Legal</option>
-          <option value="Misc. Sales and Services">Misc. Sales and Services</option>
-          <option value="Nail Service">Nail Service</option>
-          <option value="Photography, Art and Music Production">Photography, Art and Music Production</option>
-          <option value="Real Estate Services">Real Estate Services</option>
-          <option value="Religious Organizations">Religious Organizations</option>
-          <option value="Restaurant">Restaurant</option>
-          <option value="Retail Stores and Shops">Retail Stores and Shops</option>
-          <option value="Youth Resources">Youth Resources</option>
-        </select>
+        <label>Filter By Type:
+          <select data-ng-options="value for value in categories"
+              data-ng-model="search.category"></select>
+        </label>
       </li>
 
       <li>

@@ -11,6 +11,8 @@ angular.module('businessDirectory.services', [])
     return {
       getAll: function () {
         if (!$rootScope.businesses) {
+          $rootScope.categories = [];
+
           return $http.get(config.BUSINESSES_SOURCE, {headers: {"Accept": "application/vnd.github.raw"}})
             .success(function (response) {
               var lettersRegExp = /\W/g;
@@ -23,6 +25,10 @@ angular.module('businessDirectory.services', [])
                 _(item).each(function (value, key) {
                   mappedItem[headers[key]] = value;
                 });
+
+                if (!_($rootScope.categories).contains(mappedItem.category))
+                  $rootScope.categories.push(mappedItem.category);
+
                 return mappedItem;
               });
 
