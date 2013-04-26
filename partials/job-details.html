@@ -25,7 +25,7 @@
     <h2>Job Description</h2>
 
     <div class="row-fluid" ng-bind-html-unsafe="entry.teaser"></div>
-    <h4><a href="{{entry.apply_url}}">Read More and Apply</a></h4>
+    <h4 data-ng-show="entry.apply_url"><a href="{{entry.apply_url}}">Read More and Apply</a></h4>
 
     <hr>
 
