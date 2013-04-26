@@ -24,6 +24,10 @@ angular.module('jobsNorthmpls.controllers', [])
   })
 
   .controller('JobDetailsCtrl', function ($scope, $routeParams, Jobs, mdConverter) {
+
+    // animate to top
+    $('html, body').animate({ scrollTop: 0 }, 300);
+
     // The entry should be the based on the argument that is passed.
     Jobs.findJobByKey($routeParams.jobKey).then(function (entry) {
       $scope.entry = entry;
