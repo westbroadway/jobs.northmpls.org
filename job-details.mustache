@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{jobtitle}} NorthMPLS Job Board</title>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="row-fluid">
+  <div class="span12">
+    <a href="/#/jobs">&laquo; Back to all jobs</a>
+    <br />
+
+    <h1>{{jobtitle}}</h1>
+
+    <h2>
+      {{#company_url}}
+        <a href="{{company_url}}">{{company}}</a>
+      {{/company_url}}
+      {{^company_url}}
+        {{company}}
+      {{/company_url}}
+    </h2>
+
+    <div class="row-fluid">
+      <div class="span12">
+        {{city}}, {{state}} {{zipcode}}
+        &nbsp;&nbsp;
+        <span class="job_info_sep">|</span>
+        &nbsp;&nbsp;
+        Posted on {{date}}
+        &nbsp;&nbsp;
+        <span class="job_info_sep">|</span>
+        &nbsp;&nbsp;
+        <span class="duration">{{jobtype}}</span>
+      </div>
+    </div>
+    <hr>
+
+    <h2>Job Description</h2>
+
+    <div class="row-fluid">
+      {{{teaser}}}
+    </div>
+
+    {{#apply_url}}
+    <h4><a href="{{apply_url}}">Read More and Apply</a></h4>
+    {{/apply_url}}
+
+    <hr />
+
+    <div class="row-fluid">
+
+      <div class="span4 ">
+        <h4>Company</h4>
+        <span>{{company}}</span><br>
+
+        <h4>Job Type</h4>
+        <span>{{jobtype}}</span><br>
+
+      </div>
+      <div class="span4 ">
+        <h4>Location</h4>
+        <span>{{city}}, {{state}} {{zipcode}}</span><br/>
+
+        <h4>Job Title</h4>
+        <span>{{jobtitle}}</span><br>
+      </div>
+      <div class="span4 ">
+
+        <h4>Compensation</h4>
+        <span>{{compensation}}</span><br>
+
+        <h4>Job Post Source</h4>
+        <span>{{source}}</span><br>
+
+      </div>
+
+    </div>
+
+    <hr>
+    <br>
+
+  </div>
+</div>
+</body>
+</html>
