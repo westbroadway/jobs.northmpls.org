@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Business Directory</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../components/angular-ui/build/angular-ui.min.css">
 </head>
 <body data-ng-controller="MainCtrl">
 
@@ -45,6 +47,14 @@
             <li class="phone"><a href="tel:{{ business.phone }}" data-ng-bind="business.phone"></a></li>
             <li class="type" data-ng-bind="business.category"></li>
           </ul>
+          <div data-ng-switch="isMapDisplayed(business)">
+            <div data-ng-switch-when="true">
+              <div id="map_canvas" ui-map="business.map" class="map"
+                ui-event="{'map-idle': mapLoaded(business)}"
+                ui-options="getMapOptions(business)">
+              </div>
+            </div>
+          </div>
         </div>
       </li>
     </ul>
@@ -55,6 +65,9 @@
 <!-- Scripts -->
 <script src="../components/underscore/underscore-min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+<script src="../components/angular-ui/build/angular-ui.min.js"></script>
+
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
 <script src="../js/business-directory/app.js"></script>
 <script src="../js/business-directory/config.js"></script>

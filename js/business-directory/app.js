@@ -8,6 +8,7 @@ angular.module('businessDirectory', [
     , 'businessDirectory.services'
     , 'businessDirectory.directives'
     , 'businessDirectory.controllers'
+    , 'ui'
   ])/*.
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/jobs/:jobKey', {templateUrl: 'partials/job-details.html', controller: 'JobDetailsCtrl'});
