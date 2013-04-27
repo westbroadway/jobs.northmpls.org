@@ -24,6 +24,16 @@ angular.module('businessDirectory.controllers', [])
       return arr.join(', ');
     };
 
+  })
+
+  .controller('BusinessListCtrl', function ($scope) {
+
+    $scope.search = {
+      category: 0,
+      query: ''
+    };
+
+    /* Inividual item map
     $scope.isMapDisplayed = function (business) {
       return (
         _(["residential", "house", "service"]).contains(business.geo_accuracy)
@@ -49,14 +59,6 @@ angular.module('businessDirectory.controllers', [])
         position: business.map_latLng
       });
     };
-
-  })
-
-  .controller('BusinessListCtrl', function ($scope) {
-
-    $scope.search = {
-      category: 0,
-      query: ''
-    };
+    */
 
   });
