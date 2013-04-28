@@ -34,31 +34,111 @@ angular.module('businessDirectory.controllers', [])
     };
 
     /* Inividual item map
-    $scope.isMapDisplayed = function (business) {
-      return (
-        _(["residential", "house", "service"]).contains(business.geo_accuracy)
-          || (business.yelp_lat && business.yelp_long)
-        );
+     $scope.isMapDisplayed = function (business) {
+     return (
+     _(["residential", "house", "service"]).contains(business.geo_accuracy)
+     || (business.yelp_lat && business.yelp_long)
+     );
+     };
+
+     $scope.getMapOptions = function (business) {
+     var lat = business.geo_latitude || business.yelp_lat,
+     lon = business.geo_longitude || business.yelp_long;
+     business.map_latLng = new google.maps.LatLng(lat, lon);
+     return {
+     center: business.map_latLng,
+     zoom: 15,
+     mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+     };
+
+     $scope.mapLoaded = function (business) {
+     // adds new marker to map
+     new google.maps.Marker({
+     map: business.map,
+     position: business.map_latLng
+     });
+     };
+     */
+
+  })
+
+  .controller('MainMapCtrl', function ($scope, config) {
+    $scope.map = null;
+    $scope.markers = [];
+    $scope.activeCategories = {};
+
+    $scope.mapLoaded = function () {
+      // adds new marker to map
+      /*
+       $scope.markers.push(new google.maps.Marker({
+       map: $scope.map,
+       position: new google.maps.LatLng(35.784, -78.670)
+       }));
+       */
     };
 
-    $scope.getMapOptions = function (business) {
-      var lat = business.geo_latitude || business.yelp_lat,
-        lon = business.geo_longitude || business.yelp_long;
-      business.map_latLng = new google.maps.LatLng(lat, lon);
+    $scope.getMapOptions = function () {
+      //var lat = business.geo_latitude || business.yelp_lat, lon = business.geo_longitude || business.yelp_long;
+      //business.map_latLng = new google.maps.LatLng(lat, lon);
       return {
-        center: business.map_latLng,
-        zoom: 15,
+        center: new google.maps.LatLng(39.675106, -99.939531),
+        zoom: 4,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
     };
 
-    $scope.mapLoaded = function (business) {
-      // adds new marker to map
-      new google.maps.Marker({
-        map: business.map,
-        position: business.map_latLng
-      });
-    };
-    */
+    $scope.filterChanged = function (index) {
+      var thisCategory = $scope.categories[index];
 
+      if ($scope.activeCategories[index]) {
+        // checked
+        _(_($scope.businesses)
+          .filter(function (item) {
+            return item.category === thisCategory
+          }))
+          .each(function (business) {
+            if (business.marker) {
+              business.marker.setVisible(true);
+            }
+          });
+      } else {
+        // not checked
+        _(_($scope.businesses)
+          .filter(function (item) {
+            return item.category === thisCategory
+          }))
+          .each(function (business) {
+            if (business.marker) {
+              business.marker.setVisible(false);
+            }
+          });
+      }
+    };
+
+    $scope.$on(config.EVENTS.BUSINESSES_OBTAINED, function () {
+      //$scope.activeCategories = angular.copy($scope.categories);
+
+      // builds list of events from businesses
+      _($scope.businesses).each(function (business) {
+        if (
+          _(["residential", "house", "service"]).contains(business.geo_accuracy)
+            || (business.yelp_lat && business.yelp_long)
+          ) {
+          var lat = business.geo_latitude || business.yelp_lat,
+            lon = business.geo_longitude || business.yelp_long;
+
+          // adds new marker to map
+          business.marker = new google.maps.Marker({
+            map: $scope.map,
+            position: new google.maps.LatLng(lat, lon)
+          });
+        }
+      });
+
+      // make all current filters checked
+      _($scope.categories).each(function (category, index) {
+        $scope.activeCategories[index] = true;
+      });
+    });
   });

@@ -2,3 +2,26 @@
   height: 400px;
   width: 600px;
 }
+
+.mainMap-wrapper {
+
+}
+
+.mainMap-wrapper .mainMap {
+  width: 1000px;
+  height: 400px;
+  margin: 0 auto
+}
+
+.mainMap-wrapper .categories {
+  margin: 0;
+  padding: 0;
+}
+
+.mainMap-wrapper .categories li {
+  float: left;
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

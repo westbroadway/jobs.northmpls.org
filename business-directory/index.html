@@ -10,6 +10,27 @@
 
 <div data-resource-loading-notification></div>
 
+<div data-ng-controller="MainMapCtrl" class="mainMap-wrapper">
+  <div id="map_canvas" class="mainMap"
+      ui-map="map" ui-map-marker="markers"
+      ui-event="{'map-idle': mapLoaded()}"
+      ui-options="getMapOptions()">
+  </div>
+
+  <ul class="categories">
+    <li data-ng-repeat="category in categories">
+      <label>
+        <input type="checkbox" value="{{$index}}"
+            data-ng-model="activeCategories[$index]"
+            data-ng-click="filterChanged($index)">
+        {{category}}
+      </label>
+    </li>
+  </ul>
+</div>
+
+<div style="clear: both"></div>
+
 <div data-ng-controller="BusinessListCtrl">
 
   <div id="searchHeader">
