@@ -33,33 +33,32 @@ angular.module('businessDirectory.controllers', [])
       query: ''
     };
 
-    /* Inividual item map
-     $scope.isMapDisplayed = function (business) {
-     return (
-     _(["residential", "house", "service"]).contains(business.geo_accuracy)
-     || (business.yelp_lat && business.yelp_long)
-     );
-     };
+    // Inividual item map
+    $scope.isMapDisplayed = function (business) {
+      return (
+        _(["residential", "house", "service"]).contains(business.geo_accuracy)
+          || (business.yelp_lat && business.yelp_long)
+        );
+    };
 
-     $scope.getMapOptions = function (business) {
-     var lat = business.geo_latitude || business.yelp_lat,
-     lon = business.geo_longitude || business.yelp_long;
-     business.map_latLng = new google.maps.LatLng(lat, lon);
-     return {
-     center: business.map_latLng,
-     zoom: 15,
-     mapTypeId: google.maps.MapTypeId.ROADMAP
-     };
-     };
+    $scope.getMapOptions = function (business) {
+      var lat = business.geo_latitude || business.yelp_lat,
+        lon = business.geo_longitude || business.yelp_long;
+      business.map_latLng = new google.maps.LatLng(lat, lon);
+      return {
+        center: business.map_latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+    };
 
-     $scope.mapLoaded = function (business) {
-     // adds new marker to map
-     new google.maps.Marker({
-     map: business.map,
-     position: business.map_latLng
-     });
-     };
-     */
+    $scope.mapLoaded = function (business) {
+      // adds new marker to map
+      new google.maps.Marker({
+        map: business.map,
+        position: business.map_latLng
+      });
+    };
 
   })
 

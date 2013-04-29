@@ -68,16 +68,15 @@
             <li class="phone"><a href="tel:{{ business.phone }}" data-ng-bind="business.phone"></a></li>
             <li class="type" data-ng-bind="business.category"></li>
           </ul>
-          <!-- Individual item map
+          <!-- Individual item map -->
           <div data-ng-switch="isMapDisplayed(business)">
             <div data-ng-switch-when="true">
-              <div id="map_canvas" ui-map="business.map" class="map"
+              <div id="map_canvas_individual" ui-map="business.map" class="map"
                 ui-event="{'map-idle': mapLoaded(business)}"
                 ui-options="getMapOptions(business)">
               </div>
             </div>
           </div>
-          -->
         </div>
       </li>
     </ul>
