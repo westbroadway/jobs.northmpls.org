@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title>Business Directory</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="../components/angular-ui/build/angular-ui.min.css">
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../components/angular-ui/build/angular-ui.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body data-ng-controller="MainCtrl">
 <div class="container">
@@ -19,23 +19,26 @@
         ui-options="getMapOptions()">
     </div>
 
-    <ul class="categories">
-      <li data-ng-repeat="category in categories">
-        <label class="checkbox">
-          <input type="checkbox" value="{{$index}}"
-              data-ng-model="activeCategories[$index]"
-              data-ng-click="filterChanged($index)">
-          {{category}}
-        </label>
-      </li>
-    </ul>
+    <div class="well clearfix">
+      <ul class="categories">
+        <li data-ng-repeat="category in categories">
+          <label class="checkbox">
+            <input type="checkbox" value="{{$index}}"
+                data-ng-model="activeCategories[$index]"
+                data-ng-click="filterChanged($index)">
+            {{category}}
+          </label>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div style="clear: both"></div>
 
   <div data-ng-controller="BusinessListCtrl">
 
-    <div id="searchHeader" class="form-inline">
+    <div id="searchHeader" class="form-inline tac">
+      <h2>Search for businesses near you</h2>
       <label>Filter By Type:
         <select data-ng-options="value for value in categories"
             data-ng-model="search.category"></select>
