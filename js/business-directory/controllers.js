@@ -75,8 +75,8 @@ angular.module('businessDirectory.controllers', [])
       //var lat = business.geo_latitude || business.yelp_lat, lon = business.geo_longitude || business.yelp_long;
       //business.map_latLng = new google.maps.LatLng(lat, lon);
       return {
-        center: new google.maps.LatLng(39.675106, -99.939531),
-        zoom: 4,
+        center: new google.maps.LatLng(45, -93.30379),
+        zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
     };
