@@ -68,6 +68,11 @@
                 <phone data-ng-bind="business.phone"></phone>
               </li>
               <li class="type" data-ng-bind="business.category"></li>
+              <li class="socials">
+                <a data-ng-show="business.google_place_url" data-ng-href="{{business.google_place_url}}">Google Place</a>
+                <a data-ng-show="business.facebook_url" data-ng-href="{{business.facebook_url}}">Facebook</a>
+                <a data-ng-show="business.yelp_url" data-ng-href="{{business.yelp_url}}">Yelp</a>
+              </li>
             </ul>
 
             <!-- Individual item map -->
