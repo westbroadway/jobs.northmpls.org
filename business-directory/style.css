@@ -40,6 +40,7 @@
   list-style: none;
 }
 
-.media-block .media-block-module {
-
+.media-block .media-block-module li.image img {
+  max-width: 150px;
+  max-height: 150px;
 }

@@ -48,56 +48,7 @@
       </label>
     </div>
 
-    <div id="searchResults">
-      <ul class="media-block">
-        <li class="span6 media-block-module" data-ng-repeat="business in businesses | filter:{$: search.query, category: search.category}">
-
-          <div class="media-story">
-
-            <h3 class="item-title">
-              <a data-ng-show="isLink(business.website)" data-ng-href="http://{{business.website}}" data-ng-bind="business.business_name" target="_blank"></a>
-              <span data-ng-hide="isLink(business.website)" data-ng-bind="business.business_name"></span>
-            </h3>
-
-            <ul class="media-content">
-              <li class="address">
-                <a data-ng-href="https://maps.google.com/?mid=1339090648&amp;q={{ buildAddress(business) }}"
-                    data-ng-bind="buildAddress(business)"></a>
-              </li>
-              <li class="phone">
-                <phone data-ng-bind="business.phone"></phone>
-              </li>
-              <li class="type" data-ng-bind="business.category"></li>
-              <li class="socials">
-                <a data-ng-show="business.google_place_url" data-ng-href="{{business.google_place_url}}">Google Place</a>
-                <a data-ng-show="business.facebook_url" data-ng-href="{{business.facebook_url}}">Facebook</a>
-                <a data-ng-show="business.yelp_url" data-ng-href="{{business.yelp_url}}">Yelp</a>
-              </li>
-            </ul>
-
-            <!-- Individual item map -->
-            <div data-ng-switch="isMapEnabled(business)">
-              <div class="tar">
-                <a href="#show-map"
-                    data-ng-show="businessDataSpace(business, 'map').isMapHidden"
-                    data-ng-click="showMap(business, $event)">Show map <i class="icon-arrow-down"></i></a>
-                <a href="#show-map"
-                    data-ng-hide="businessDataSpace(business, 'map').isMapHidden"
-                    data-ng-click="hideMap(business, $event)">Hide map <i class="icon-arrow-up"></i></a>
-              </div>
-              <div data-ng-switch-when="true" data-ng-hide="businessDataSpace(business, 'map').isMapHidden">
-                <div id="map_canvas_individual" class="map"
-                    ui-map="businessDataSpace(business, 'map').map"
-                    ui-event="{'map-idle': mapLoaded(business)}"
-                    ui-options="getMapOptions(business)">
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </li>
-      </ul>
-    </div>
+    <div id="searchResults" data-ng-include="'partials/search-results.html'"></div>
 
   </div>
 </div>
