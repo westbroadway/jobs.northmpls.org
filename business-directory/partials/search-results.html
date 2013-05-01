@@ -8,7 +8,10 @@
         <span data-ng-hide="isLink(business.website)" data-ng-bind="business.business_name"></span>
       </h3>
 
-      <ul class="media-content">
+      <ul class="media-content clearfix">
+        <li class="image pull-right" data-ng-show="business.goolge_place_img">
+          <img data-ng-src="{{business.goolge_place_img}}" class="img-polaroid">
+        </li>
         <li class="address">
           <a data-ng-href="https://maps.google.com/?mid=1339090648&amp;q={{ buildAddress(business) }}"
               data-ng-bind="buildAddress(business)"></a>
@@ -21,9 +24,6 @@
           <a data-ng-show="business.google_place_url" data-ng-href="{{business.google_place_url}}">Google Place</a>
           <a data-ng-show="business.facebook_url" data-ng-href="{{business.facebook_url}}">Facebook</a>
           <a data-ng-show="business.yelp_url" data-ng-href="{{business.yelp_url}}">Yelp</a>
-        </li>
-        <li class="image" data-ng-show="business.goolge_place_img">
-          <img data-ng-src="{{business.goolge_place_img}}" class="img-polaroid">
         </li>
       </ul>
 

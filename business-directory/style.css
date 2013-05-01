@@ -36,7 +36,7 @@
 }
 
 /* BUSINESSES LIST */
-.media-block {
+.media-block, .media-block .media-content {
   list-style: none;
 }
 
