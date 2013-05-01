@@ -7,6 +7,16 @@ angular.module('businessDirectory.controllers', [])
   .controller('MainCtrl', function ($scope, config, Businesses) {
     Businesses.getAll();
 
+    $scope.search = {
+        category: 0,
+        query: ''
+      };
+
+    $scope.$on(config.EVENTS.BUSINESSES_OBTAINED, function () {
+      // load the first one category on page load
+      $scope.search.category = $scope.categories[0];
+    });
+
     var regexpUrl = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
     $scope.isLink = function (string) {
       return regexpUrl.test(string);
@@ -27,11 +37,6 @@ angular.module('businessDirectory.controllers', [])
   })
 
   .controller('BusinessListCtrl', function ($scope) {
-
-    $scope.search = {
-      category: 0,
-      query: ''
-    };
 
     // Inividual item map
     $scope.isMapDisplayed = function (business) {
@@ -134,6 +139,7 @@ angular.module('businessDirectory.controllers', [])
       _($scope.categories).each(function (category, index) {
         $scope.activeCategories[index] = true;
       });
+
     });
   })
   .controller('TestCalendar', function ($scope) {
