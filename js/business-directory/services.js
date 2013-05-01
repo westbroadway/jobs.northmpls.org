@@ -20,14 +20,19 @@ angular.module('businessDirectory.services', [])
               var headers = _(response.shift()).map(function (value) { return value.toLowerCase().replace(lettersRegExp, ''); });
 
               // create hashes from businesses arrays
-              $rootScope.businesses = _(response).map(function (item) {
+              $rootScope.businesses = _(response).map(function (item, index) {
                 var mappedItem = {};
+                // convert array to hash
                 _(item).each(function (value, key) {
                   mappedItem[headers[key]] = value;
                 });
 
+                // save category
                 if (!_($rootScope.categories).contains(mappedItem.category))
                   $rootScope.categories.push(mappedItem.category);
+
+                // set index
+                mappedItem.index = index;
 
                 return mappedItem;
               });

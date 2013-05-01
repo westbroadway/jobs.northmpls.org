@@ -8,9 +8,22 @@ angular.module('businessDirectory.controllers', [])
     Businesses.getAll();
 
     $scope.search = {
-        category: 0,
-        query: ''
-      };
+      category: 0,
+      query: ''
+    };
+
+    // storage for custom businesses data
+    $scope.businessesData = {
+      map: {}, // maps settings
+      marker: {} // markers on the main map
+    };
+
+    $scope.businessDataSpace = function (business, namespace) {
+      if (!$scope.businessesData[namespace][business.index]) {
+        $scope.businessesData[namespace][business.index] = {};
+      }
+      return $scope.businessesData[namespace][business.index];
+    };
 
     $scope.$on(config.EVENTS.BUSINESSES_OBTAINED, function () {
       // load the first one category on page load
@@ -39,7 +52,7 @@ angular.module('businessDirectory.controllers', [])
   .controller('BusinessListCtrl', function ($scope) {
 
     // Inividual item map
-    $scope.isMapDisplayed = function (business) {
+    $scope.isMapEnabled = function (business) {
       return (
         _(["residential", "house", "service"]).contains(business.geo_accuracy)
           || (business.yelp_lat && business.yelp_long)
@@ -49,32 +62,37 @@ angular.module('businessDirectory.controllers', [])
     $scope.getMapOptions = function (business) {
       var lat = business.geo_latitude || business.yelp_lat,
         lon = business.geo_longitude || business.yelp_long;
-      business.map_latLng = new google.maps.LatLng(lat, lon);
+
+      var mapStorage = $scope.businessDataSpace(business, 'map');
+      mapStorage.map_latLng = new google.maps.LatLng(lat, lon);
 
       // hide map initially
-      business.isMapHidden = true;
+      mapStorage.isMapHidden = true;
 
       return {
-        center: business.map_latLng,
+        center: mapStorage.map_latLng,
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
     };
 
     $scope.mapLoaded = function (business) {
+      var mapStorage = $scope.businessDataSpace(business, 'map');
       // adds new marker to map
-      new google.maps.Marker({
-        map: business.map,
-        position: business.map_latLng
+      mapStorage.marker = new google.maps.Marker({
+        map: mapStorage.map,
+        position: mapStorage.map_latLng
       });
     };
 
-    $scope.showMap = function (business) {
-      business.isMapHidden = false;
+    $scope.showMap = function (business, event) {
+      if (event) event.preventDefault();
+      $scope.businessDataSpace(business, 'map').isMapHidden = false;
     };
 
-    $scope.hideMap = function (business) {
-      business.isMapHidden = true;
+    $scope.hideMap = function (business, event) {
+      if (event) event.preventDefault();
+      $scope.businessDataSpace(business, 'map').isMapHidden = true;
     };
 
   })
@@ -108,8 +126,9 @@ angular.module('businessDirectory.controllers', [])
             return item.category === thisCategory
           }))
           .each(function (business) {
-            if (business.marker) {
-              business.marker.setVisible(true);
+            var markerDataSpace = $scope.businessDataSpace(business, 'marker');
+            if (markerDataSpace.marker) {
+              markerDataSpace.marker.setVisible(true);
             }
           });
       } else {
@@ -119,8 +138,9 @@ angular.module('businessDirectory.controllers', [])
             return item.category === thisCategory
           }))
           .each(function (business) {
-            if (business.marker) {
-              business.marker.setVisible(false);
+            var markerDataSpace = $scope.businessDataSpace(business, 'marker');
+            if (markerDataSpace.marker) {
+              markerDataSpace.marker.setVisible(false);
             }
           });
       }
@@ -139,11 +159,12 @@ angular.module('businessDirectory.controllers', [])
             lon = business.geo_longitude || business.yelp_long;
 
           // adds new marker to map
-          business.marker = new google.maps.Marker({
+          var businessMarkerSpace = $scope.businessDataSpace(business, 'marker');
+          businessMarkerSpace.marker = new google.maps.Marker({
             map: $scope.map,
             position: new google.maps.LatLng(lat, lon)
           });
-          $scope.markers.push(business.marker);
+          $scope.markers.push(businessMarkerSpace.marker);
         }
       });
 
