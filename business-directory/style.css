@@ -26,6 +26,20 @@
   padding: 0;
 }
 
+/* HELPERS */
 .tac {
   text-align: center;
+}
+
+.tar {
+  text-align: right;
+}
+
+/* BUSINESSES LIST */
+.media-block {
+  list-style: none;
+}
+
+.media-block .media-block-module {
+
 }

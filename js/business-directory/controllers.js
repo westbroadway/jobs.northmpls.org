@@ -50,6 +50,10 @@ angular.module('businessDirectory.controllers', [])
       var lat = business.geo_latitude || business.yelp_lat,
         lon = business.geo_longitude || business.yelp_long;
       business.map_latLng = new google.maps.LatLng(lat, lon);
+
+      // hide map initially
+      business.isMapHidden = true;
+
       return {
         center: business.map_latLng,
         zoom: 15,
@@ -63,6 +67,14 @@ angular.module('businessDirectory.controllers', [])
         map: business.map,
         position: business.map_latLng
       });
+    };
+
+    $scope.showMap = function (business) {
+      business.isMapHidden = false;
+    };
+
+    $scope.hideMap = function (business) {
+      business.isMapHidden = true;
     };
 
   })
