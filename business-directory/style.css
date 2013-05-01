@@ -8,8 +8,8 @@
 }
 
 .mainMap-wrapper .mainMap {
-  width: 1000px;
-  height: 400px;
+  max-width: 1260px;
+  height: 600px;
   margin: 0 auto
 }
 

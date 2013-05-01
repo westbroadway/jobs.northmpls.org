@@ -5,6 +5,7 @@
   <title>Business Directory</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="../components/angular-ui/build/angular-ui.min.css">
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
 </head>
 <body data-ng-controller="MainCtrl">
 
@@ -56,18 +57,21 @@
     <ul class="media-block">
       <li class="media-block-module" data-ng-repeat="business in businesses | filter:{$: search.query, category: search.category}">
         <div class="media-story">
-          <div class="item-title">
+
+          <h3 class="item-title">
             <a data-ng-show="isLink(business.website)" data-ng-href="http://{{business.website}}" data-ng-bind="business.business_name" target="_blank"></a>
             <span data-ng-hide="isLink(business.website)" data-ng-bind="business.business_name"></span>
-          </div>
+          </h3>
+
           <ul class="media-content">
             <li class="address">
               <a data-ng-href="https://maps.google.com/?mid=1339090648&amp;q={{ buildAddress(business) }}"
                   data-ng-bind="buildAddress(business)"></a>
             </li>
-            <li class="phone"><a href="tel:{{ business.phone }}" data-ng-bind="business.phone"></a></li>
+            <li class="phone"><phone data-ng-bind="business.phone"></phone></li>
             <li class="type" data-ng-bind="business.category"></li>
           </ul>
+
           <!-- Individual item map -->
           <div data-ng-switch="isMapDisplayed(business)">
             <div data-ng-switch-when="true">
@@ -77,6 +81,7 @@
               </div>
             </div>
           </div>
+
         </div>
       </li>
     </ul>
