@@ -1,7 +1,7 @@
 <ul class="media-block">
   <li class="span6 media-block-module" data-ng-repeat="business in businesses | filter:{$: search.query, category: search.category}">
 
-    <div class="media-story">
+    <div class="media-story" data-ng-controller="BusinessItemCtrl">
 
       <h3 class="item-title">
         <a data-ng-show="isLink(business.website)" data-ng-href="http://{{business.website}}" data-ng-bind="business.business_name" target="_blank"></a>
@@ -37,7 +37,25 @@
               data-ng-hide="businessDataSpace(business, 'map').isMapHidden"
               data-ng-click="hideMap(business, $event)">Hide map <i class="icon-arrow-up"></i></a>
         </div>
+
+        <div id="{{getInfoWindowId()}}"
+            data-ui-map-info-window="myInfoWindow"
+            ui-event="{'map-domready': 'infoWindowReady()'}">
+          <h5>{{business.business_name}}</h5>
+          Address: {{business.address}} {{business.address_2}}<br>
+          {{business.city}} {{business.state}} {{business.zip}}<br>
+          Phone: {{business.phone}}<br>
+          Category: {{business.category}}
+        </div>
+
         <div data-ng-switch-when="true" data-ng-hide="businessDataSpace(business, 'map').isMapHidden">
+
+          <!-- this is the confusing part. we have to point the map marker directive
+            at an existing google.maps.Marker object, so it can hook up events -->
+          <div ui-map-marker="businessDataSpace(business, 'map').marker"
+              ui-event="{'map-click': 'openMarkerInfo()'}">
+          </div>
+
           <div id="map_canvas_individual" class="map"
               ui-map="businessDataSpace(business, 'map').map"
               ui-event="{'map-idle': mapLoaded(business)}"
