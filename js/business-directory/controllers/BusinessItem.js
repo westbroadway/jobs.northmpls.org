@@ -5,13 +5,6 @@ businessDirectory.controllers
   .controller('BusinessItemCtrl', function ($scope) {
 
     // Inividual item map
-    $scope.isMapEnabled = function () {
-      return (
-        _(["residential", "house", "service"]).contains($scope.business.geo_accuracy)
-          || ($scope.business.yelp_lat && $scope.business.yelp_long)
-        );
-    };
-
     $scope.getMapOptions = function () {
       var lat = $scope.business.geo_latitude || $scope.business.yelp_lat,
         lon = $scope.business.geo_longitude || $scope.business.yelp_long;
@@ -27,6 +20,14 @@ businessDirectory.controllers
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
+    };
+
+    // weird but works only with duplication
+    $scope.isMapEnabled = function (business) {
+      return (
+        _(["residential", "house", "service"]).contains(business.geo_accuracy)
+        || (business.yelp_lat && business.yelp_long)
+        );
     };
 
     $scope.mapLoaded = function () {
@@ -49,12 +50,7 @@ businessDirectory.controllers
       return 'info-window-individual-' + $scope.business.index;
     };
 
-    $scope.infoWindowReady = function () {
-      var infoElm = angular.element('#' + $scope.getInfoWindowId());
-      var infoElmBack = infoElm.parent().parent().prev().addClass('info_window_individual');
-      infoElmBack.height(infoElm.height() + 'px');
-      console.log(infoElm, infoElmBack);
-    };
+    $scope.infoWindowReady = function () {};
 
     $scope.showMap = function (business, event) {
       if (event) event.preventDefault();

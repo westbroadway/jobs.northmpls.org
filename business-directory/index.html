@@ -12,6 +12,22 @@
   <div data-resource-loading-notification></div>
 
   <div data-ng-controller="MainMapCtrl" class="mainMap-wrapper">
+    <!-- this is the confusing part. we have to point the map marker directive
+      at an existing google.maps.Marker object, so it can hook up events -->
+    <div ng-repeat="marker in markers" ui-map-marker="markers[$index]"
+        ui-event="{'map-click': 'openMarkerInfo(marker)'}">
+    </div>
+
+    <div data-ng-repeat="business in businesses | filter: isMapEnabled">
+      <div data-ui-map-info-window="infoWindowForMainMap[business.index]">
+        <h5>{{business.business_name}}</h5>
+        Address: {{business.address}} {{business.address_2}}<br>
+        {{business.city}} {{business.state}} {{business.zip}}<br>
+        Phone: {{business.phone}}<br>
+        Category: {{business.category}}
+      </div>
+    </div>
+
     <div id="map_canvas" class="mainMap"
         ui-map="map" ui-map-marker="markers"
         ui-event="{'map-idle': mapLoaded()}"
