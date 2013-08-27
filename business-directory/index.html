@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <title>Business Directory</title>
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../components/angular-ui/build/angular-ui.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-ng-controller="MainCtrl">
@@ -13,6 +12,22 @@
   <div data-resource-loading-notification></div>
 
   <div data-ng-controller="MainMapCtrl" class="mainMap-wrapper">
+    <!-- this is the confusing part. we have to point the map marker directive
+      at an existing google.maps.Marker object, so it can hook up events -->
+    <div ng-repeat="marker in markers" ui-map-marker="markers[$index]"
+        ui-event="{'map-click': 'openMarkerInfo(marker)'}">
+    </div>
+
+    <div data-ng-repeat="business in businesses | filter: isMapEnabled">
+      <div data-ui-map-info-window="infoWindowForMainMap[business.index]">
+        <h5>{{business.business_name}}</h5>
+        Address: {{business.address}} {{business.address_2}}<br>
+        {{business.city}} {{business.state}} {{business.zip}}<br>
+        Phone: {{business.phone}}<br>
+        Category: {{business.category}}
+      </div>
+    </div>
+
     <div id="map_canvas" class="mainMap"
         ui-map="map" ui-map-marker="markers"
         ui-event="{'map-idle': mapLoaded()}"
@@ -54,9 +69,11 @@
 </div>
 
 <!-- Scripts -->
+<!--<script src="//code.jquery.com/jquery-2.0.0.min.js"></script>-->
 <script src="../components/underscore/underscore-min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-<script src="../components/angular-ui/build/angular-ui.min.js"></script>
+<script src="../components/angular-ui-utils/modules/event/event.js"></script>
+<script src="../components/angular-ui-map/src/map.js"></script>
 
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
@@ -68,5 +85,6 @@
 <script src="../js/business-directory/controllers/Main.js"></script>
 <script src="../js/business-directory/controllers/MainMap.js"></script>
 <script src="../js/business-directory/controllers/BusinessList.js"></script>
+<script src="../js/business-directory/controllers/BusinessItem.js"></script>
 </body>
 </html>

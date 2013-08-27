@@ -2,23 +2,35 @@
 
 businessDirectory.controllers
 
-  .controller('MainMapCtrl', function ($scope, config) {
+  .controller('MainMapCtrl', function ($scope, $rootScope, config) {
     $scope.map = null;
     $scope.markers = [];
     $scope.activeCategories = {};
-
-    $scope.mapLoaded = function () {
-      // adds new marker to map
-    };
+    $scope.infoWindowForMainMap = {};
 
     $scope.getMapOptions = function () {
-      //var lat = business.geo_latitude || business.yelp_lat, lon = business.geo_longitude || business.yelp_long;
-      //business.map_latLng = new google.maps.LatLng(lat, lon);
       return {
         center: new google.maps.LatLng(45, -93.30379),
         zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
+    };
+
+    $scope.mapLoaded = function () {};
+
+    $scope.openMarkerInfo = function (marker) {
+      $scope.infoWindowForMainMap[marker.businessIndex].open($scope.map, marker);
+    };
+
+    $scope.getInfoWindowId = function () {
+      return 'info-window-global-' + $scope.business.index;
+    };
+
+    $scope.isMapEnabled = function (business) {
+      return (
+        _(["residential", "house", "service"]).contains(business.geo_accuracy)
+        || (business.yelp_lat && business.yelp_long)
+        );
     };
 
     $scope.filterChanged = function (index) {
@@ -55,11 +67,8 @@ businessDirectory.controllers
       //$scope.activeCategories = angular.copy($scope.categories);
 
       // builds list of events from businesses
-      _($scope.businesses).each(function (business) {
-        if (
-          _(["residential", "house", "service"]).contains(business.geo_accuracy)
-            || (business.yelp_lat && business.yelp_long)
-          ) {
+      _($scope.businesses).each(function (business, businessIndex) {
+        if ($scope.isMapEnabled(business)) {
           var lat = business.geo_latitude || business.yelp_lat,
             lon = business.geo_longitude || business.yelp_long;
 
@@ -69,6 +78,7 @@ businessDirectory.controllers
             map: $scope.map,
             position: new google.maps.LatLng(lat, lon)
           });
+          businessMarkerSpace.marker.businessIndex = businessIndex;
           $scope.markers.push(businessMarkerSpace.marker);
         }
       });

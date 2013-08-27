@@ -8,7 +8,7 @@ var businessDirectory = angular.module('businessDirectory', [
     , 'businessDirectory.services'
     , 'businessDirectory.directives'
     , 'businessDirectory.controllers'
-    , 'ui'
+    , 'ui.map'
   ]);
 
 businessDirectory.controllers = angular.module('businessDirectory.controllers', []);
