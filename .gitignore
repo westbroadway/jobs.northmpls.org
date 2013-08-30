@@ -2,3 +2,4 @@ logs/*
 !.gitkeep
 .idea
 .DS_Store
+/business_directory/business_directory.rb

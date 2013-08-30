@@ -17,11 +17,17 @@
       <h1>Title</h1>
 
       <div class="row">
-      <ul>
-      {{#directory}}
-        <li>{{business_name}}</li>
-      {{/directory}}
-      </ul>
+        <ul id="directory">
+        {{#directory}}
+          <li>
+              <img src="/images/examples/monkeyisland.jpg" class="thumb">
+              <h4><span class="name">{{business_name}}</span> <span class="yelp-category">{{category_yelp}}</span></h4>
+              <address><span class="address">{{address}}</span></address> <br />
+              <phone>{{phone}}</phone> <br />
+              <div class="category">{{category}}</div>
+          </li>
+        {{/directory}}
+        </ul>
       </div>
 
     </div>
