@@ -24,11 +24,12 @@
           {{#directory}}
           <li>
               <img src="{{google_place_img}}" class="thumb">
-              <h4><span class="name">{{business_name}}</span> <span class="yelp-category">{{category_yelp}}</span></h4>
-              <div class="address"><address>
-                {{address}},
-                {{city}}, {{state}}, {{zip}}
-              </address></div>
+              <h4>
+                <span class="name">{{business_name}}</span> <span class="yelp-category" style="display:none;">{{category_yelp}}</span>
+              </h4>
+              <div class="address">
+                <address>{{address}}, {{city}}, {{state}}, {{zip}}</address>
+              </div>
               <phone>{{phone}}</phone> <br />
               <div class="category">{{category}}</div>
               <div class="social">
