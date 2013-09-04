@@ -6,7 +6,7 @@
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Page Title</title>
+    <title>North Minneapolis Business Directory</title>
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" media="screen">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -14,7 +14,7 @@
 
   <body>
     <div class="container">
-      <h1>Title</h1>
+      <h1>North Mpls Business Directory</h1>
 
       <div class="row" id="directory">
         <input type="text" class="search" />
@@ -28,6 +28,17 @@
               <address><span class="address">{{address}}</span></address> <br />
               <phone>{{phone}}</phone> <br />
               <div class="category">{{category}}</div>
+              <div class="social">
+                {{#facebook_url}}
+                  <a href="{{facebook_url}}" class="facebook"><i class="icon-facebook"></i></a>
+                {{/facebook_url}}
+                {{#yelp_url}}
+                  <a href="{{yelp_url}}" class="yelp"><img src="http://cdn.cape.io/icons/yelp/yelp-32.png" /></a>
+                {{/yelp_url}}
+                {{#google_place_url}}
+                  <a href="{{google_place_url}}" class="google-plus"><i class="icon-google-plus"></i></a>
+                {{/google_place_url}}
+              </div>
           </li>
           {{/directory}}
         </ul>
