@@ -25,7 +25,11 @@
           <li>
               <img src="{{google_place_img}}" class="thumb">
               <h4>
-                <span class="name">{{business_name}}</span> <span class="yelp-category" style="display:none;">{{category_yelp}}</span>
+                {{#website}}
+                  <a href="{{website}}"><span class="name">{{business_name}}</span></a>
+                {{^website}}
+                  <span class="name">{{business_name}}</span>
+                {{/website}}
               </h4>
               <div class="address">
                 <address>{{address}}, {{city}}, {{state}}, {{zip}}</address>
