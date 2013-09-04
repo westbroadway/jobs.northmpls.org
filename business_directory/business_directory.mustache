@@ -16,26 +16,38 @@
     <div class="container">
       <h1>Title</h1>
 
-      <div class="row">
-        <ul id="directory">
-        {{#directory}}
+      <div class="row" id="directory">
+        <input type="text" class="search" />
+        <span class="sort" data-sort="name">Sort by name</span>
+        <span class="sort" data-sort="category">Sort by category</span>
+        <ul class="list">
+          {{#directory}}
           <li>
-              <img src="/images/examples/monkeyisland.jpg" class="thumb">
+              <img src="{{google_place_img}}" class="thumb">
               <h4><span class="name">{{business_name}}</span> <span class="yelp-category">{{category_yelp}}</span></h4>
               <address><span class="address">{{address}}</span></address> <br />
               <phone>{{phone}}</phone> <br />
               <div class="category">{{category}}</div>
           </li>
-        {{/directory}}
+          {{/directory}}
         </ul>
       </div>
 
     </div>
 
     <!-- JavaScript plugins (requires jQuery) -->
-    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="//code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+    <script src="//cdn.cape.io/listjs/list.min.js"
+    <script type="text/javascript">
+      $('document').ready(function() {
+        var options = {
+          valueNames: [ 'name', 'category' ]
+        };
+        var directoryList = new List('directory', options);
+      });
+    </script>
 
   </body>
 </html>
