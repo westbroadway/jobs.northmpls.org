@@ -23,7 +23,7 @@
         <ul class="list">
           {{#directory}}
           <li>
-              <img src="{{google_place_img}}" class="thumb">
+              <img src="{{google_place_img}}" class="thumb" />
               <h4>
                 {{#website}}
                   <a href="{{website}}"><span class="name">{{business_name}}</span></a>
@@ -32,6 +32,9 @@
                   <span class="name">{{business_name}}</span>
                 {{/website}}
               </h4>
+              {{#wbc_member}}
+                <img src="http://cdn.cape.io/icons/westbroadway/wbc-67.png" />
+              {{/wbc_member}}
               <div class="address">
                 <address>{{address}}, {{city}}, {{state}}, {{zip}}</address>
               </div>
