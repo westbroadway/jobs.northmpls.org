@@ -54,14 +54,11 @@
                   <span class="name">{{business_name}}</span>
                 {{/website}}
               </h4>
-              {{#wbc_member}}
-                <img src="http://cdn.cape.io/icons/westbroadway/wbc-67.png" />
-              {{/wbc_member}}
-              <phone>{{phone}}</phone> <br />
-              <div class="address">
-                <address>{{address}}, {{city}}, {{state}}, {{zip}}</address>
-              </div>
+              <div class="category">{{category}}</div><br />
               <span class="social">
+                {{#wbc_member}}
+                  <img src="http://cdn.cape.io/icons/westbroadway/wbc-67.png" />
+                {{/wbc_member}}
                 {{#facebook_url}}
                   <a href="{{facebook_url}}" class="facebook"><i class="icon-facebook"></i></a>
                 {{/facebook_url}}
@@ -72,7 +69,12 @@
                   <a href="{{google_place_url}}" class="google-plus"><i class="icon-google-plus"></i></a>
                 {{/google_place_url}}
               </span>
-              <span class="category">{{category}}</span>
+              <phone>{{phone}}</phone> <br />
+              {{#address}}
+                <div class="address">
+                  <address>{{address}}, {{city}}, {{state}}, {{zip}}</address>
+                </div>
+              {{/address}}
             </div>
           </li>
           {{/directory}}
