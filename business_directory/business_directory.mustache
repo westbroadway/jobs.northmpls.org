@@ -79,13 +79,13 @@
             $(this).html(link);
         });
         $('select.category-filter').change( function() {
-          alert( this.value );
           directoryList.filter(function(item) {
-            if (item.values().category == this.value) {
+            var category = item.values().category
+            if (category == this.value) {
               return true;
             }
             else {
-              console.log(item.values().category)
+              console.log("'"+category+"'"+this.value+"'")
               return false;
             }
           });
