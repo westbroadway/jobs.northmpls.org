@@ -62,11 +62,12 @@
                   <span class="name">{{business_name}}</span>
                 {{/website}}
               </h4>
-              <small class="category text-muted">{{category}}</small><br />
+              <small class="category text-muted">{{category}}</small>
+              {{#wbc_member}}
+                <span class="label label-primary">WBC Member</span><!-- <img src="http://cdn.cape.io/icons/westbroadway/wbc-67.png" /> -->
+              {{/wbc_member}}
+              <br />
               <span class="social">
-                {{#wbc_member}}
-                  <img src="http://cdn.cape.io/icons/westbroadway/wbc-67.png" />
-                {{/wbc_member}}
                 {{#facebook_url}}
                   <a href="{{facebook_url}}" class="facebook"><i class="icon-facebook"></i></a>
                 {{/facebook_url}}
