@@ -18,7 +18,7 @@
 
       <div class="row" id="directory">
         <input type="text" class="search" />
-        <select>
+        <select class="category-filter">
           {{#categories}}
             <option value="{{.}}">{{.}}</option>
           {{/categories}}
@@ -77,6 +77,17 @@
         $('address').each(function () {
             var link = "<a href='http://maps.google.com/maps?q=" + encodeURIComponent( $(this).text() ) + "' target='_blank'>" + $(this).text() + "</a>";
             $(this).html(link);
+        });
+        $('select .category-filter').change( function() {
+          alert( this.value );
+          directoryList.filter(function(item) {
+            if (item.values().category == this.value) {
+              return true;
+            }
+            else {
+              return false;
+            }
+          });
         });
       });
     </script>
