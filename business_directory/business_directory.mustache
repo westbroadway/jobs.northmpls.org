@@ -79,7 +79,7 @@
           $(this).html(link);
         });
         $('select.category-filter').change( function() {
-          var select_value = this.value
+          var select_value = this.value.replace("&","&amp;");
           directoryList.filter(function(item) {
             var category = item.values().category
             if (category == select_value) {
