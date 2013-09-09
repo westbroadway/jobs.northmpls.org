@@ -75,17 +75,18 @@
         };
         var directoryList = new List('directory', options);
         $('address').each(function () {
-            var link = "<a href='http://maps.google.com/maps?q=" + encodeURIComponent( $(this).text() ) + "' target='_blank'>" + $(this).text() + "</a>";
-            $(this).html(link);
+          var link = "<a href='http://maps.google.com/maps?q=" + encodeURIComponent( $(this).text() ) + "' target='_blank'>" + $(this).text() + "</a>";
+          $(this).html(link);
         });
         $('select.category-filter').change( function() {
+          var select_value = this.value
           directoryList.filter(function(item) {
             var category = item.values().category
-            if (category == this.value) {
+            if (category == select_value) {
               return true;
             }
             else {
-              console.log("'"+category+"'"+this.value+"'")
+              console.log("'"+category+"'='"+select_value+"'")
               return false;
             }
           });
