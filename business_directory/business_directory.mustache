@@ -22,19 +22,28 @@
       <h1>North Mpls Business Directory</h1>
 
       <div class="row" id="directory">
-        <input type="text" class="search" />
-        <select class="category-filter">
-          {{#categories}}
-            <option value="{{.}}">{{.}}</option>
-          {{/categories}}
-        </select>
-        <span class="sort" data-sort="name">Sort by name</span>
-        <span class="sort" data-sort="category">Sort by category</span>
+        <form role="form">
+          <div class="form-group">
+            <label for="category-filter">Filter By Category:</label>
+            <select class="category-filter form-control" id="category-filter">
+              {{#categories}}
+                <option value="{{.}}">{{.}}</option>
+              {{/categories}}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="text-search-filter">Search By Name:</label>
+            <input type="text" class="search form-control" id="text-search-filter" placeholder="Enter business title">
+          </div>
+          <span class="sort" data-sort="name">Sort by name</span>
+          <span class="sort" data-sort="category">Sort by category</span>
+        </form>
+
         <ul class="list">
           {{#directory}}
           <li class="row">
             <img src="{{google_place_img}}" class="thumb col-xs-2 col-sm-2 col-md-2 col-lg-2" />
-            <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="col-sm-8 col-md-8 col-lg-8">
               <h4>
                 {{#website}}
                   <a href="{{website}}"><span class="name">{{business_name}}</span></a>
