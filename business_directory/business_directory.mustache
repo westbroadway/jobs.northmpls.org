@@ -10,6 +10,11 @@
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" media="screen">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <style>
+      ul {
+        list-style-type: none;
+      }
+    </style>
   </head>
 
   <body>
@@ -27,8 +32,9 @@
         <span class="sort" data-sort="category">Sort by category</span>
         <ul class="list">
           {{#directory}}
-          <li>
-              <img src="{{google_place_img}}" class="thumb" />
+          <li class="row">
+            <img src="{{google_place_img}}" class="thumb col-md-2" />
+            <div class="col-md-6">
               <h4>
                 {{#website}}
                   <a href="{{website}}"><span class="name">{{business_name}}</span></a>
@@ -55,7 +61,8 @@
                 {{#google_place_url}}
                   <a href="{{google_place_url}}" class="google-plus"><i class="icon-google-plus"></i></a>
                 {{/google_place_url}}
-              </div>
+              </div>              
+            </div>
           </li>
           {{/directory}}
         </ul>
