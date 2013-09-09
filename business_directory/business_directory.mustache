@@ -18,6 +18,11 @@
 
       <div class="row" id="directory">
         <input type="text" class="search" />
+        <select>
+          {{#categories}}
+            <option value="{{.}}">{{.}}</option>
+          {{/categories}}
+        </select>
         <span class="sort" data-sort="name">Sort by name</span>
         <span class="sort" data-sort="category">Sort by category</span>
         <ul class="list">
