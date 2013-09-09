@@ -11,7 +11,10 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" media="screen">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <style>
-
+    .list h4 {
+      margin-bottom: 0px;
+      margin-top: 5px;
+    }
     </style>
   </head>
 
@@ -39,9 +42,9 @@
           </div>
         </form>
 
-        <ul class="list list-unstyled">
+        <ul class="list list-group">
           {{#directory}}
-          <li class="row">
+          <li class="row list-group-item">
             <img src="{{google_place_img}}" class="thumb col-xs-2 col-sm-2 col-md-2 col-lg-2" />
             <div class="col-sm-8 col-md-8 col-lg-8">
               <h4>
