@@ -22,8 +22,8 @@
       <h1>North Mpls Business Directory</h1>
 
       <div class="row" id="directory">
-        <form role="form">
-          <div class="form-group">
+        <form role="form" class="row">
+          <div class="form-group col-sm-4">
             <label for="category-filter">Filter By Category:</label>
             <select class="category-filter form-control" id="category-filter">
               {{#categories}}
@@ -31,12 +31,14 @@
               {{/categories}}
             </select>
           </div>
-          <div class="form-group">
+          <div class="form-group col-sm-3">
             <label for="text-search-filter">Search By Name:</label>
             <input type="text" class="search form-control" id="text-search-filter" placeholder="Enter business title">
           </div>
-          <span class="sort" data-sort="name">Sort by name</span>
-          <span class="sort" data-sort="category">Sort by category</span>
+          <div class="col-sm-3">
+            <div class="sort" data-sort="name">Sort by name</div>
+            <div class="sort" data-sort="category">Sort by category</div>
+          </div>
         </form>
 
         <ul class="list">
